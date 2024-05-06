@@ -50,6 +50,8 @@ def main(path: Annotated[str, Argument(help="Specify the path to the input image
         output_file = open(output_path, 'w')
         for row in output:
             output_file.write(''.join(row) + '\n')
+        output_file.close()
+        print(f"ASCII art saved as {output_path}")
 
 
 if __name__ == "__main__":
