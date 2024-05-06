@@ -1,9 +1,13 @@
-from typer import Argument, Option, run
+from typer import Typer, Argument, Option
 from PIL import Image
 from pathlib import Path
 from typing_extensions import Annotated
+from rich import print
+
+app = Typer(context_settings={"help_option_names": ['-h', '--help']})
 
 
+@app.command()
 def main(path: Annotated[str, Argument(help="Specify the path to the input image")] = "image.png",
          downscale: Annotated[int, Option("--downscale", "-d", "-D", help="Specify the downscale factor")] = 4,
          output_path: Annotated[
@@ -51,8 +55,8 @@ def main(path: Annotated[str, Argument(help="Specify the path to the input image
         for row in output:
             output_file.write(''.join(row) + '\n')
         output_file.close()
-        print(f"ASCII art saved as {output_path}")
+        print(f"ASCII art saved as [bold green]{output_path}[/bold green]")
 
 
 if __name__ == "__main__":
-    run(main)
+    app()
