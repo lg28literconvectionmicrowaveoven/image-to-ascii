@@ -21,21 +21,21 @@ def main(path: Annotated[str, Argument(help="Specify the path to the input image
             brightness = sum(pixels[x, y])
             if brightness == 0:
                 output[y].append(" ")
-            elif brightness in range(1, 100):
+            elif 1 <= brightness < 100:
                 output[y].append("'")
-            elif brightness in range(100, 200):
+            elif 100 <= brightness < 200:
                 output[y].append("(")
-            elif brightness in range(200, 300):
+            elif 200 <= brightness < 300:
                 output[y].append("/")
-            elif brightness in range(300, 400):
+            elif 300 <= brightness < 400:
                 output[y].append("+")
-            elif brightness in range(400, 500):
+            elif 400 <= brightness < 500:
                 output[y].append("*")
-            elif brightness in range(500, 600):
+            elif 500 <= brightness < 600:
                 output[y].append("&")
-            elif brightness in range(600, 700):
+            elif 600 <= brightness < 700:
                 output[y].append("%")
-            elif brightness in range(700, 750):
+            elif 700 <= brightness < 750:
                 output[y].append("X")
             else:
                 output[y].append("#")
