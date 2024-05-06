@@ -10,6 +10,9 @@ def main(path: Annotated[str, Argument(help="Specify the path to the input image
              str, Option("--output-path", "-o", "-O", help="Specify the path to the output file")] = None,
          print_in_console: Annotated[bool, Option("--console", "-c", "-C",
                                                   help="Specify whether to print in console or output file.")] = False):
+    """
+    CLI tool to generate ASCII art from image files.
+    """
     image = Image.open(Path(path))
     width, height = [dimension // downscale for dimension in image.size]
     image = image.resize((width, height))
