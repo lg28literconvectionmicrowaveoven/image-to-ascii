@@ -51,11 +51,11 @@ def main(path: Annotated[str, Argument(help="Specify the path to the input image
             print(''.join(row) + '\n')
     else:
         output_path = '.'.join([path.split('.')[0], 'txt']) if not output_path else output_path
-        output_file = open(output_path, 'w')
-        for row in output:
-            output_file.write(''.join(row) + '\n')
-        output_file.close()
-        print(f"ASCII art saved as [bold green]{output_path}[/bold green]")
+        with open(output_path, 'w') as output_file:
+            for row in output:
+                output_file.write(''.join(row) + '\n')
+            output_file.close()
+            print(f"ASCII art saved as [bold green]{output_path}[/bold green]")
 
 
 if __name__ == "__main__":
